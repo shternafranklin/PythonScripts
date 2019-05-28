@@ -1,0 +1,10 @@
+temp = [10,-20,-289,100]
+
+def writer(temp):
+    with open("example.txt","w") as file:
+        for t in temp:
+            if t > -273.15:
+                f = t * 9/5 + 32
+                file.write(str(f) + "\n")
+
+writer(temp)
