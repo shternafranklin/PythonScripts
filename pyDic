@@ -22,4 +22,10 @@ def dict(w):
     else:
         return "The word does not exist. Check Again"
      
-print(dict(word))
+output = dict(word)
+
+if type(output) == list:
+    for item in output:
+        print(item)
+else:
+    print(output)
