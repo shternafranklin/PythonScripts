@@ -1,0 +1,24 @@
+from tkinter import *
+
+
+#create an empty window
+window = Tk()
+
+#going to create some buttons that takes arguments
+b1=Button(window, text ="Execute")
+#you need the pack method to actually place the button on the gui
+#b1.pack()
+#or Grid method - you have more control with grid specify row and column
+b1.grid(row = 0, column =0)
+
+
+e1 = Entry(window)
+e1.grid(row=0, column=1)
+
+t1 = Text(window, height=1, width=20)
+t1.grid(row=0, column=2)
+
+
+
+#this keeps the window up and allows the exit button
+window.mainloop()
