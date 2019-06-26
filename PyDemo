@@ -1,0 +1,18 @@
+from flask import Flask 
+
+#create variable to store flask variable
+
+app = Flask(__name__)
+
+#integrator
+@app.route('/') #you can put /about and it will then work localhost:500/about
+def home():
+    return "website content goes here"
+
+#integrator
+@app.route('/about') #you can put /about and it will then work localhost:500/about
+def about():
+    return "This is the about page: website content goes here"
+
+if __name__ == "__main__":
+    app.run(debug=True)
