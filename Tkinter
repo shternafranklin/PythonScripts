@@ -4,29 +4,55 @@ from tkinter import *
 #create an empty window
 window = Tk()
 
-def km_to_miles():
-    #print(el_value.get())
-    miles = float(el_value.get()) * 1.6
-    t1.insert(END, miles)
+def convert_val():
+    #gram
+    grams = float(el_value.get()) * 1000
+    gram.delete("1.0", END)
+    gram.insert(END, grams)
+    
+    #pounts
+    pounds = float(el_value.get()) * 2.20462
+    pnd.delete("1.0", END)
+    pnd.insert(END, pounds)
+   
+    #ounces  
+    ounces = float(el_value.get()) * 35.274
+    ounce.delete("1.0", END)
+    ounce.insert(END, ounces)
 
 
 #going to create some buttons that takes arguments
 #to actually have the buttons do something, insert the command which will act like a function
-b1=Button(window, text ="Execute", command=km_to_miles)
+b1=Button(window, text ="Convert", command=convert_val)
 #you need the pack method to actually place the button on the gui
 #b1.pack()
 #or Grid method - you have more control with grid specify row and column
-b1.grid(row = 0, column =0)
+b1.grid(row = 0, column =2)
+
+labelText=StringVar()
+labelText.set("Enter Kg Value")
+labelDir=Label(window, textvariable=labelText, height=4)
+labelDir.grid(row=0,column=0)
 
 
 el_value = StringVar()
 e1 = Entry(window, textvariable=el_value)
 e1.grid(row=0, column=1)
 
-t1 = Text(window, height=1, width=20)
-t1.grid(row=0, column=2)
 
+#the converted values
+Label(window, text="Gram").grid(row=1,column=0)
+Label(window, text="Pound").grid(row=1, column=1)
+Label(window, text="Ounce").grid(row=1, column=2)
 
+gram = Text(window, height= 1.25, width=10)
+gram.grid(row=2, column=0, padx=(10, 10), pady=5)
+
+pnd = Text(window, height=1.25, width=10)
+pnd.grid(row=2, column=1,padx=(0, 10),pady=5)
+
+ounce= Text(window, height=1.25, width=10)
+ounce.grid(row=2, column=2, pady=5, padx=(0, 10))
 
 #this keeps the window up and allows the exit button
 window.mainloop()
