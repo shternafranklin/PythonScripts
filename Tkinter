@@ -4,15 +4,23 @@ from tkinter import *
 #create an empty window
 window = Tk()
 
+def km_to_miles():
+    #print(el_value.get())
+    miles = float(el_value.get()) * 1.6
+    t1.insert(END, miles)
+
+
 #going to create some buttons that takes arguments
-b1=Button(window, text ="Execute")
+#to actually have the buttons do something, insert the command which will act like a function
+b1=Button(window, text ="Execute", command=km_to_miles)
 #you need the pack method to actually place the button on the gui
 #b1.pack()
 #or Grid method - you have more control with grid specify row and column
 b1.grid(row = 0, column =0)
 
 
-e1 = Entry(window)
+el_value = StringVar()
+e1 = Entry(window, textvariable=el_value)
 e1.grid(row=0, column=1)
 
 t1 = Text(window, height=1, width=20)
