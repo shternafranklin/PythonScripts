@@ -1,0 +1,32 @@
+import cv2
+
+
+#read cascade and make a cascadeclassifier object
+face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
+
+#read the file in a grey scale when searching for faces SO MAKE ANOTHER VAIRABLE
+img = cv2.imread("photo.jpg")
+
+#use grey_image scale of the image
+grey_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+#do a detection, it will search photo and return points of the actual face
+#faces aray of the rectangle 
+#print(type(faces))
+faces = face_cascade.detectMultiScale(grey_image, 
+scaleFactor =1.05, 
+minNeighbors = 5)
+
+#want to accss all the values in the array
+#and print the rectangle on the images
+for x,y,w,h in faces:
+    img = cv2.rectangle(img, (x,y), (x+w, y+h), (0,255,0), 3)
+ 
+#resize the image
+re = cv2.resize(img, (int(img.shape[1]/2), int(img.shape[0]/2)))
+
+
+#Show image
+cv2.imshow("resize", re)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
