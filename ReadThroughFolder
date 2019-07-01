@@ -1,0 +1,28 @@
+import cv2
+import glob
+
+
+#Get all file names
+image_name = glob.glob("sample-images/*.jpg")
+  
+#read through all the file name
+for imgages in image_name:
+
+    #Read the images
+    image = cv2.imread(imgages)
+
+    #Resize the images
+    re=cv2.resize(image, (100,100)) 
+
+    #display the image on the screen
+    if re is not None:
+        cv2.imshow(imgages, re)
+    elif re is None:
+        print("Error Loading" + imgages)
+        continue
+
+    cv2.waitKey(2000)
+    cv2.destroyAllWindows()
+
+    #Save the resized image
+    cv2.imwrite("resized_"+ imgages, re)
