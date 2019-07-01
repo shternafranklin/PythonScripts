@@ -1,0 +1,40 @@
+import cv2
+
+#takes the file ,three arguments 
+#1 =color
+#0 = b/w
+#-1 = color image with transparancy
+img = cv2.imread("Capture.PNG",0)
+
+#type of numpy
+print(type(img))
+#prints a numpy array
+print(img)
+
+#see the array 
+print(img.shape)
+
+#see dimensions
+print(img.ndim)
+
+
+
+#resize image
+#resized_img = cv2.resize(img,(500, 1000)) #(w, h)
+#cv2.imshow("ind", resized_img)
+
+#resize but keep dimensions
+resized_img = cv2.resize(img, (int(img.shape[1]/2), int(img.shape[0]/2))) #(w, h)
+cv2.imshow("indian", resized_img)
+
+
+#write
+cv2.imwrite("indian_resize.png", resized_img )
+
+#show image
+#cv2.imshow("Indian", img)
+
+#keep window open for a certain time, 0-until click close, 2000-miliseconds
+cv2.waitKey(0)
+#after close window
+cv2.destroyAllWindows()
