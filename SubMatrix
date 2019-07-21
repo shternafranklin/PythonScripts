@@ -1,0 +1,28 @@
+def largestMatrix(arr):
+    # Write your code here
+
+    Max_Entry = 0
+
+    #Calculating Row and columns 
+    rows = len(arr) # no. of rows in M[][] 
+    columms = len(arr[0]) # no. of columns in M[][] 
+    
+    #creating an amepty arr of zeros to calculate max_entry
+    carr = [[0 for k in range(columms)] for l in range(rows)] 
+    
+  
+    # Construct other entries 
+    for i in range(0, rows): 
+        for j in range(0, columms): 
+
+            if (arr[i][j] == 1): 
+                carr[i][j] = min(carr[i][j-1], carr[i-1][j],carr[i-1][j-1]) + 1
+
+            if carr[i][j] > Max_Entry:
+                Max_Entry = carr[i][j]
+
+    print(Max_Entry)
+    return Max_Entry
+
+
+largestMatrix([[1,1,1], [1,1,0], [1,0,1]])
